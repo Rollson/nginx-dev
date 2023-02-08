@@ -6,7 +6,7 @@ metadata:
 spec:
   project: development
   source:
-    repoURL: https://github.com/Rollson/nginx-helm-repo
+    repoURL: https://github.com/Rollson/nginx-helm-repo.git
     targetRevision: HEAD # always the last commit in the git repo
     path: my-ngnix-helm-chart
     helm:

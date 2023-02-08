@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-management
+  name: development
   namespace: argocd
 spec:
   project: development
   source:
-    repoURL: https://github.com/Rollson/nginx-dev
+    repoURL: https://github.com/Rollson/nginx-dev.git
     targetRevision: HEAD # always the last commit in the git repo
     path: helm
   destination:

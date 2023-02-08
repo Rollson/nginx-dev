@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+  namespace: argocd
+spec:
+  project: development
+  source:
+    repoURL: https://github.com/Rollson/nginx-helm-repo
+    targetRevision: HEAD # always the last commit in the git repo
+    path: my-ngnix-helm-chart
+    helm:
+      values: |
+        image:
+          tag: latest
+      version: v3
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: development
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true  #creates namespace (L14) if it does not exist
+
+    automated:
+      selfHeal: true
+      prune: true
